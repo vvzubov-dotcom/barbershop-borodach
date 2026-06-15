@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>БородачЪ — Премиальный барбершоп в Москве</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #0d0d0d;
+      color: #f5f0eb;
+      line-height: 1.6;
+    }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0d0d0d; }
+    ::-webkit-scrollbar-thumb { background: #c9a96e; border-radius: 4px; }
+
+    .gold { color: #c9a96e; }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* HEADER */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(13,13,13,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,169,110,0.15);
+    }
+    header .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+    }
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #c9a96e;
+      letter-spacing: 2px;
+      text-decoration: none;
+    }
+    .logo span { font-weight: 400; font-style: italic; }
+    nav a {
+      color: #a09888;
+      text-decoration: none;
+      font-weight: 400;
+      font-size: 14px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-left: 32px;
+      transition: color 0.3s;
+    }
+    nav a:hover { color: #c9a96e; }
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: #c9a96e;
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(135deg, #0d0d0d 0%, #1a1410 50%, #0d0d0d 100%);
+      padding-top: 70px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -50%; left: -50%;
+      width: 200%; height: 200%;
+      background: radial-gradient(circle at 50% 50%, rgba(201,169,110,0.03) 0%, transparent 60%);
+      animation: pulse 8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 0.5; }
+      50% { transform: scale(1.1); opacity: 1; }
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 800px; }
+    .hero-suptitle {
+      font-size: 14px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: #c9a96e;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 72px;
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+    .hero h1 .gold { font-style: italic; font-weight: 400; }
+    .hero p {
+      font-size: 18px;
+      color: #a09888;
+      margin: 20px 0 40px;
+      font-weight: 300;
+    }
+    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-block;
+      padding: 16px 40px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-primary {
+      background: #c9a96e;
+      color: #0d0d0d;
+    }
+    .btn-primary:hover { background: #dbb87a; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: #c9a96e;
+      border: 1px solid #c9a96e;
+    }
+    .btn-outline:hover { background: rgba(201,169,110,0.1); transform: translateY(-2px); }
+
+    /* SECTIONS */
+    section { padding: 100px 0; }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 42px;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      text-align: center;
+      color: #a09888;
+      font-weight: 300;
+      font-size: 16px;
+      margin-bottom: 60px;
+    }
+    .divider {
+      width: 60px;
+      height: 2px;
+      background: #c9a96e;
+      margin: 16px auto 40px;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+    .service-card {
+      background: #1a1a1a;
+      padding: 40px 32px;
+      text-align: center;
+      border: 1px solid #2a2a2a;
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: #c9a96e;
+      transform: scaleX(0);
+      transition: transform 0.4s;
+    }
+    .service-card:hover::before { transform: scaleX(1); }
+    .service-card:hover { border-color: #c9a96e; transform: translateY(-8px); }
+    .service-icon { font-size: 40px; margin-bottom: 16px; display: block; }
+    .service-card h3 { font-size: 20px; margin-bottom: 8px; }
+    .service-card p { color: #a09888; font-size: 14px; margin-bottom: 16px; }
+    .service-price { font-size: 24px; font-weight: 700; color: #c9a96e; }
+
+    /* MASTERS */
+    .masters-bg { background: linear-gradient(180deg, #0d0d0d, #14100c); }
+    .masters-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 32px;
+    }
+    .master-card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      overflow: hidden;
+      text-align: center;
+      transition: all 0.4s;
+    }
+    .master-card:hover { border-color: #c9a96e; transform: translateY(-8px); }
+    .master-photo {
+      width: 100%;
+      height: 320px;
+      display: block;
+      background: #1a1410;
+    }
+    .master-photo svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    .master-info { padding: 24px; }
+    .master-info h3 { font-size: 20px; }
+    .master-info .role { color: #c9a96e; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; margin: 4px 0 8px; }
+    .master-info p { color: #a09888; font-size: 14px; }
+
+    /* BOOKING */
+    .booking-bg { background: linear-gradient(135deg, #0d0d0d, #1a1410); }
+    .booking-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      padding: 48px;
+    }
+    .form-row { margin-bottom: 20px; }
+    .form-row label {
+      display: block;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #a09888;
+      margin-bottom: 6px;
+    }
+    .form-row input,
+    .form-row select {
+      width: 100%;
+      padding: 14px 16px;
+      background: #0d0d0d;
+      border: 1px solid #2a2a2a;
+      color: #f5f0eb;
+      font-family: 'Roboto', sans-serif;
+      font-size: 15px;
+      transition: border 0.3s;
+    }
+    .form-row input:focus,
+    .form-row select:focus { outline: none; border-color: #c9a96e; }
+    .form-row input::placeholder { color: #555; }
+    .form-row select option { background: #1a1a1a; }
+    .form-row-inline {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .picker-btn {
+      width: 100%;
+      padding: 14px 16px;
+      background: #0d0d0d;
+      border: 1px solid #2a2a2a;
+      color: #a09888;
+      font-family: 'Roboto', sans-serif;
+      font-size: 15px;
+      text-align: left;
+      cursor: pointer;
+      transition: border 0.3s;
+    }
+    .picker-btn:hover,
+    .picker-btn:focus { border-color: #c9a96e; outline: none; }
+    .picker-btn.filled { color: #f5f0eb; }
+    .btn-submit {
+      width: 100%;
+      padding: 18px;
+      background: #c9a96e;
+      color: #0d0d0d;
+      font-family: 'Roboto', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .btn-submit:hover { background: #dbb87a; }
+
+    /* POPUP CALENDAR & TIME PICKER */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 300;
+      align-items: center;
+      justify-content: center;
+    }
+    .popup-overlay.active { display: flex; }
+    .popup {
+      background: #1a1a1a;
+      border: 1px solid #c9a96e;
+      padding: 24px;
+      width: 360px;
+      max-width: 90vw;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+    .popup-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+    .popup-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: #c9a96e;
+    }
+    .popup-close {
+      background: none;
+      border: none;
+      color: #555;
+      font-size: 24px;
+      cursor: pointer;
+      line-height: 1;
+    }
+    .popup-close:hover { color: #c9a96e; }
+
+    .cal-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .cal-nav button {
+      background: none;
+      border: 1px solid #2a2a2a;
+      color: #c9a96e;
+      font-size: 18px;
+      width: 36px;
+      height: 36px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cal-nav button:hover { border-color: #c9a96e; background: rgba(201,169,110,0.1); }
+    .cal-nav .cal-month {
+      font-size: 16px;
+      font-weight: 500;
+    }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 2px;
+      text-align: center;
+    }
+    .cal-grid .cal-dayname {
+      font-size: 11px;
+      color: #555;
+      text-transform: uppercase;
+      padding: 6px 0;
+      font-weight: 500;
+    }
+    .cal-grid button {
+      background: none;
+      border: none;
+      padding: 8px 0;
+      color: #a09888;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: 'Roboto', sans-serif;
+    }
+    .cal-grid button:hover { background: rgba(201,169,110,0.1); color: #c9a96e; }
+    .cal-grid button.cal-today { color: #c9a96e; font-weight: 700; }
+    .cal-grid button.cal-selected { background: #c9a96e; color: #0d0d0d; font-weight: 700; }
+    .cal-grid button.cal-other { color: #333; cursor: default; }
+    .cal-grid button.cal-other:hover { background: none; color: #333; }
+
+    .cal-actions {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 12px;
+    }
+    .cal-actions button {
+      background: none;
+      border: 1px solid #2a2a2a;
+      color: #a09888;
+      padding: 8px 16px;
+      font-family: 'Roboto', sans-serif;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cal-actions button:hover { border-color: #c9a96e; color: #c9a96e; }
+    .cal-actions .cal-today-btn { color: #c9a96e; }
+
+    .time-list {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      max-height: 260px;
+      overflow-y: auto;
+    }
+    .time-list button {
+      padding: 10px 8px;
+      background: #0d0d0d;
+      border: 1px solid #2a2a2a;
+      color: #a09888;
+      font-family: 'Roboto', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .time-list button:hover { border-color: #c9a96e; color: #c9a96e; }
+    .time-list button.sel { border-color: #c9a96e; background: rgba(201,169,110,0.15); color: #c9a96e; font-weight: 700; }
+    .time-list::-webkit-scrollbar { width: 4px; }
+    .time-list::-webkit-scrollbar-track { background: #0d0d0d; }
+    .time-list::-webkit-scrollbar-thumb { background: #c9a96e; }
+
+    /* CONTACTS */
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 32px;
+      text-align: center;
+    }
+    .contact-item h4 {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #c9a96e;
+      margin-bottom: 8px;
+    }
+    .contact-item p { color: #a09888; font-size: 15px; }
+    .contact-item a {
+      color: #f5f0eb;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .contact-item a:hover { color: #c9a96e; }
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border: 1px solid #2a2a2a;
+      color: #c9a96e;
+      font-size: 20px;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+    .social-links a:hover { border-color: #c9a96e; background: rgba(201,169,110,0.1); }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid #1a1a1a;
+      padding: 32px 0;
+      text-align: center;
+    }
+    footer p { color: #555; font-size: 13px; }
+
+    /* MODAL */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.8);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-overlay.active { display: flex; }
+    .modal {
+      background: #1a1a1a;
+      border: 1px solid #c9a96e;
+      padding: 48px;
+      max-width: 480px;
+      width: 90%;
+      text-align: center;
+    }
+    .modal h2 { font-family: 'Playfair Display', serif; font-size: 28px; margin-bottom: 12px; }
+    .modal p { color: #a09888; margin-bottom: 24px; }
+    .modal .btn { margin-top: 8px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero h1 { font-size: 40px; }
+      .hero p { font-size: 16px; }
+      .section-title { font-size: 32px; }
+      nav { display: none; }
+      nav.open { display: flex; flex-direction: column; position: absolute; top: 70px; left: 0; right: 0; background: rgba(13,13,13,0.98); padding: 16px 24px; border-bottom: 1px solid #2a2a2a; }
+      nav.open a { margin: 8px 0; }
+      .menu-toggle { display: block; }
+      .booking-form { padding: 24px; }
+      .form-row-inline { grid-template-columns: 1fr; }
+      .master-photo { height: 240px; }
+      .popup { width: 300px; }
+      .time-list { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 30px; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .btn { width: 100%; text-align: center; }
+      section { padding: 60px 0; }
+    }
+
+    /* ANIMATIONS */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <a href="#" class="logo">Бородач<span>Ъ</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Меню">☰</button>
+    <nav id="mainNav">
+      <a href="#services">Услуги</a>
+      <a href="#masters">Мастера</a>
+      <a href="#booking">Запись</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-suptitle">Moscow Premium Barbershop</div>
+    <h1>Бородач<span class="gold">Ъ</span></h1>
+    <p>Брутально. Премиально. Стильно.<br>Твой образ — наша работа</p>
+    <div class="hero-actions">
+      <a href="#booking" class="btn btn-primary">Записаться</a>
+      <a href="#services" class="btn btn-outline">Наши услуги</a>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <h2 class="section-title fade-in">Услуги и цены</h2>
+    <div class="divider"></div>
+    <p class="section-sub fade-in">Премиальный уход за бородой и волосами для настоящих мужчин</p>
+    <div class="services-grid">
+      <div class="service-card fade-in">
+        <span class="service-icon">✂️</span>
+        <h3>Мужская стрижка</h3>
+        <p>Мытьё головы, стрижка машинкой и ножницами, укладка</p>
+        <div class="service-price">1 500 ₽</div>
+      </div>
+      <div class="service-card fade-in">
+        <span class="service-icon">🧔</span>
+        <h3>Моделирование бороды</h3>
+        <p>Коррекция формы, окантовка, уход за бородой и усами</p>
+        <div class="service-price">800 ₽</div>
+      </div>
+      <div class="service-card fade-in">
+        <span class="service-icon">🪒</span>
+        <h3>Бритьё опасной бритвой</h3>
+        <p>Горячее полотенце, премиальная косметика, парфюмированный компресс</p>
+        <div class="service-price">1 000 ₽</div>
+      </div>
+      <div class="service-card fade-in">
+        <span class="service-icon">🔥</span>
+        <h3>Комбо (стрижка + борода)</h3>
+        <p>Полный образ: стрижка + моделирование бороды + укладка</p>
+        <div class="service-price">2 500 ₽</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="masters" class="masters-bg">
+  <div class="container">
+    <h2 class="section-title fade-in">Наши мастера</h2>
+    <div class="divider"></div>
+    <p class="section-sub fade-in">Команда профессионалов с опытом работы от 5 лет</p>
+    <div class="masters-grid">
+      <div class="master-card fade-in">
+        <div class="master-photo">
+          <svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="360" rx="0" fill="#1a1410"/>
+            <ellipse cx="200" cy="120" rx="75" ry="80" fill="#d4a574"/>
+            <ellipse cx="200" cy="185" rx="95" ry="55" fill="#d4a574"/>
+            <ellipse cx="200" cy="175" rx="90" ry="45" fill="#1a1410"/>
+            <ellipse cx="200" cy="155" rx="85" ry="40" fill="#d4a574"/>
+            <circle cx="175" cy="110" r="7" fill="#333"/>
+            <circle cx="225" cy="110" r="7" fill="#333"/>
+            <circle cx="175" cy="108" r="3" fill="#fff"/>
+            <circle cx="225" cy="108" r="3" fill="#fff"/>
+            <path d="M185 135 Q200 145 215 135" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <rect x="130" y="190" width="140" height="20" rx="8" fill="#c9a96e"/>
+            <rect x="145" y="210" width="110" height="35" rx="6" fill="#333"/>
+            <path d="M125 135 Q120 100 135 80" stroke="#1a1410" stroke-width="8" fill="none"/>
+            <path d="M275 135 Q280 100 265 80" stroke="#1a1410" stroke-width="8" fill="none"/>
+            <path d="M120 160 Q80 140 70 100" stroke="#d4a574" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <path d="M280 160 Q320 140 330 100" stroke="#d4a574" stroke-width="5" fill="none" stroke-linecap="round"/>
+            <text x="200" y="285" text-anchor="middle" fill="#c9a96e" font-size="16" font-weight="700" font-family="Montserrat, sans-serif">★ Топ-мастер ★</text>
+            <text x="200" y="310" text-anchor="middle" fill="#a09888" font-size="12" font-family="Roboto, sans-serif">Стрижки | Бритьё | Борода</text>
+          </svg>
+        </div>
+        <div class="master-info">
+          <h3>Артём</h3>
+          <div class="role">Топ-мастер</div>
+          <p>Стаж 8 лет. Специализируется на мужских стрижках и классическом бритье. Обучался в Италии.</p>
+        </div>
+      </div>
+      <div class="master-card fade-in">
+        <div class="master-photo">
+          <svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="360" rx="0" fill="#1a1410"/>
+            <ellipse cx="200" cy="120" rx="72" ry="78" fill="#c8a882"/>
+            <ellipse cx="200" cy="180" rx="92" ry="50" fill="#c8a882"/>
+            <ellipse cx="200" cy="170" rx="88" ry="42" fill="#8b4513"/>
+            <ellipse cx="200" cy="152" rx="82" ry="38" fill="#c8a882"/>
+            <circle cx="175" cy="108" r="7" fill="#333"/>
+            <circle cx="225" cy="108" r="7" fill="#333"/>
+            <circle cx="175" cy="106" r="3" fill="#fff"/>
+            <circle cx="225" cy="106" r="3" fill="#fff"/>
+            <path d="M185 132 Q200 142 215 132" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M130 185 Q160 220 200 225 Q240 220 270 185" stroke="#8b4513" stroke-width="6" fill="none" stroke-linecap="round"/>
+            <rect x="135" y="192" width="130" height="22" rx="8" fill="#c9a96e"/>
+            <rect x="150" y="214" width="100" height="32" rx="6" fill="#222"/>
+            <path d="M115 100 L120 60 L125 100" fill="#c8a882" stroke="#8b4513" stroke-width="2"/>
+            <path d="M275 100 L280 60 L285 100" fill="#c8a882" stroke="#8b4513" stroke-width="2"/>
+            <text x="200" y="280" text-anchor="middle" fill="#c9a96e" font-size="16" font-weight="700" font-family="Montserrat, sans-serif">★ Барбер-стилист ★</text>
+            <text x="200" y="305" text-anchor="middle" fill="#a09888" font-size="12" font-family="Roboto, sans-serif">Авторские стрижки | Борода</text>
+          </svg>
+        </div>
+        <div class="master-info">
+          <h3>Дмитрий</h3>
+          <div class="role">Барбер-стилист</div>
+          <p>Стаж 6 лет. Мастер моделирования бороды и авторских стрижек. Призёр Barber Battle 2024.</p>
+        </div>
+      </div>
+      <div class="master-card fade-in">
+        <div class="master-photo">
+          <svg viewBox="0 0 400 360" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="360" rx="0" fill="#1a1410"/>
+            <ellipse cx="200" cy="118" rx="74" ry="76" fill="#e0b896"/>
+            <ellipse cx="200" cy="182" rx="94" ry="52" fill="#e0b896"/>
+            <ellipse cx="200" cy="173" rx="90" ry="44" fill="#2c1810"/>
+            <ellipse cx="200" cy="150" rx="84" ry="36" fill="#e0b896"/>
+            <circle cx="175" cy="105" r="7" fill="#333"/>
+            <circle cx="225" cy="105" r="7" fill="#333"/>
+            <circle cx="175" cy="103" r="3" fill="#fff"/>
+            <circle cx="225" cy="103" r="3" fill="#fff"/>
+            <path d="M185 130 Q200 140 215 130" stroke="#333" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <rect x="125" y="188" width="150" height="18" rx="9" fill="#c9a96e"/>
+            <rect x="140" y="206" width="120" height="38" rx="6" fill="#111"/>
+            <ellipse cx="120" cy="90" rx="15" ry="25" fill="#2c1810"/>
+            <ellipse cx="280" cy="90" rx="15" ry="25" fill="#2c1810"/>
+            <ellipse cx="115" cy="85" rx="10" ry="18" fill="#e0b896"/>
+            <ellipse cx="285" cy="85" rx="10" ry="18" fill="#e0b896"/>
+            <text x="200" y="278" text-anchor="middle" fill="#c9a96e" font-size="16" font-weight="700" font-family="Montserrat, sans-serif">★ Барбер-универсал ★</text>
+            <text x="200" y="303" text-anchor="middle" fill="#a09888" font-size="12" font-family="Roboto, sans-serif">Любые типы волос | Классика</text>
+          </svg>
+        </div>
+        <div class="master-info">
+          <h3>Сергей</h3>
+          <div class="role">Барбер-универсал</div>
+          <p>Стаж 5 лет. Работает с любыми типами волос. Мастер hot-towel shave и мужской укладки.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="booking" class="booking-bg">
+  <div class="container">
+    <h2 class="section-title fade-in">Запись онлайн</h2>
+    <div class="divider"></div>
+    <p class="section-sub fade-in">Заполни форму — мы подберём удобное время</p>
+    <div class="booking-form fade-in">
+      <form id="bookingForm">
+        <div class="form-row">
+          <label for="name">Ваше имя</label>
+          <input type="text" id="name" name="name" placeholder="Александр" required>
+        </div>
+        <div class="form-row">
+          <label for="phone">Телефон</label>
+          <input type="tel" id="phone" name="phone" placeholder="+7 (999) 123-45-67" required>
+        </div>
+        <div class="form-row">
+          <label for="master">Мастер</label>
+          <select id="master" name="master" required>
+            <option value="">Выберите мастера</option>
+            <option value="Артём">Артём (топ-мастер)</option>
+            <option value="Дмитрий">Дмитрий (барбер-стилист)</option>
+            <option value="Сергей">Сергей (барбер-универсал)</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <label for="service">Услуга</label>
+          <select id="service" name="service" required>
+            <option value="">Выберите услугу</option>
+            <option value="Стрижка">Мужская стрижка — 1 500 ₽</option>
+            <option value="Борода">Моделирование бороды — 800 ₽</option>
+            <option value="Бритьё">Бритьё опасной бритвой — 1 000 ₽</option>
+            <option value="Комбо">Комбо (стрижка + борода) — 2 500 ₽</option>
+          </select>
+        </div>
+        <div class="form-row-inline">
+          <div class="form-row">
+            <label>Дата</label>
+            <button type="button" class="picker-btn" id="dateBtn">Выберите дату</button>
+            <input type="hidden" id="date" name="date">
+          </div>
+          <div class="form-row">
+            <label>Время</label>
+            <button type="button" class="picker-btn" id="timeBtn">Выберите время</button>
+            <input type="hidden" id="time" name="time">
+          </div>
+        </div>
+        <button type="submit" class="btn-submit">Записаться</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="contacts">
+  <div class="container">
+    <h2 class="section-title fade-in">Контакты</h2>
+    <div class="divider"></div>
+    <p class="section-sub fade-in">Ждём тебя с 10:00 до 22:00 без выходных</p>
+    <div class="contacts-grid">
+      <div class="contact-item fade-in">
+        <h4>Адрес</h4>
+        <p>Москва, ул. Тверская, 15</p>
+        <p>м. Тверская / Пушкинская</p>
+      </div>
+      <div class="contact-item fade-in">
+        <h4>Телефон</h4>
+        <p><a href="tel:+74951234567">+7 (495) 123-45-67</a></p>
+      </div>
+      <div class="contact-item fade-in">
+        <h4>Мессенджеры</h4>
+        <div class="social-links">
+          <a href="https://wa.me/74951234567" target="_blank" title="WhatsApp">W</a>
+          <a href="https://t.me/borodach_barbershop" target="_blank" title="Telegram">T</a>
+          <a href="https://vk.com/borodach_barbershop" target="_blank" title="ВКонтакте">VK</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p>© 2026 БородачЪ. Премиальный барбершоп в Москве.</p>
+  </div>
+</footer>
+
+<!-- Popup Календарь -->
+<div class="popup-overlay" id="calOverlay">
+  <div class="popup">
+    <div class="popup-header">
+      <span class="popup-title">Выберите дату</span>
+      <button type="button" class="popup-close" id="calClose">&times;</button>
+    </div>
+    <div class="cal-nav">
+      <button type="button" id="calPrev">◀</button>
+      <span class="cal-month" id="calMonthLabel">Март 2026</span>
+      <button type="button" id="calNext">▶</button>
+    </div>
+    <div class="cal-grid" id="calGrid">
+      <span class="cal-dayname">Пн</span>
+      <span class="cal-dayname">Вт</span>
+      <span class="cal-dayname">Ср</span>
+      <span class="cal-dayname">Чт</span>
+      <span class="cal-dayname">Пт</span>
+      <span class="cal-dayname">Сб</span>
+      <span class="cal-dayname">Вс</span>
+    </div>
+    <div class="cal-actions">
+      <button type="button" id="calTodayBtn" class="cal-today-btn">Сегодня</button>
+      <button type="button" id="calClear">Сбросить</button>
+    </div>
+  </div>
+</div>
+
+<!-- Popup Время -->
+<div class="popup-overlay" id="timeOverlay">
+  <div class="popup">
+    <div class="popup-header">
+      <span class="popup-title">Выберите время</span>
+      <button type="button" class="popup-close" id="timeClose">&times;</button>
+    </div>
+    <div class="time-list" id="timeList"></div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <h2>Спасибо, <span id="modalName"></span>!</h2>
+    <p>Мы приняли вашу заявку.<br>Мастер <strong id="modalMaster"></strong> ждёт вас <span id="modalDate"></span> в <span id="modalTime"></span>.</p>
+    <p>Подтверждение пришлём в ближайшее время.</p>
+    <button class="btn btn-primary" onclick="closeModal()">Отлично</button>
+  </div>
+</div>
+
+<script>
+  // === Menu ===
+  document.getElementById('menuToggle').addEventListener('click', function(){
+    document.getElementById('mainNav').classList.toggle('open');
+  });
+  document.querySelectorAll('nav a').forEach(function(link){
+    link.addEventListener('click', function(){
+      document.getElementById('mainNav').classList.remove('open');
+    });
+  });
+
+  // === Fade-in ===
+  function checkFade() {
+    document.querySelectorAll('.fade-in').forEach(function(el){
+      var rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 60) el.classList.add('visible');
+    });
+  }
+  window.addEventListener('scroll', checkFade);
+  window.addEventListener('load', checkFade);
+
+  // === Modal ===
+  var modalOverlay = document.getElementById('modalOverlay');
+  function closeModal() { modalOverlay.classList.remove('active'); }
+  modalOverlay.addEventListener('click', function(e){ if (e.target === modalOverlay) closeModal(); });
+
+  // === Calendar Popup ===
+  var calOverlay = document.getElementById('calOverlay');
+  var dateBtn = document.getElementById('dateBtn');
+  var dateHidden = document.getElementById('date');
+  var calGrid = document.getElementById('calGrid');
+  var calMonthLabel = document.getElementById('calMonthLabel');
+  var calPrev = document.getElementById('calPrev');
+  var calNext = document.getElementById('calNext');
+  var calTodayBtn = document.getElementById('calTodayBtn');
+  var calClear = document.getElementById('calClear');
+  var calClose = document.getElementById('calClose');
+
+  var calDate = new Date();
+  var calSelected = null;
+  var todayStr = new Date().toISOString().split('T')[0];
+
+  function renderCalendar() {
+    var year = calDate.getFullYear();
+    var month = calDate.getMonth();
+    var monthNames = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+    calMonthLabel.textContent = monthNames[month] + ' ' + year;
+
+    var firstDay = new Date(year, month, 1).getDay();
+    firstDay = firstDay === 0 ? 6 : firstDay - 1;
+    var daysInMonth = new Date(year, month + 1, 0).getDate();
+    var prevMonthDays = new Date(year, month, 0).getDate();
+
+    // Keep only weekday headers
+    calGrid.innerHTML = '';
+    ['Пн','Вт','Ср','Чт','Пт','Сб','Вс'].forEach(function(d){
+      var span = document.createElement('span');
+      span.className = 'cal-dayname';
+      span.textContent = d;
+      calGrid.appendChild(span);
+    });
+
+    // Previous month gray days
+    for (var i = firstDay - 1; i >= 0; i--) {
+      var btn = document.createElement('button');
+      btn.className = 'cal-other';
+      btn.textContent = prevMonthDays - i;
+      btn.disabled = true;
+      calGrid.appendChild(btn);
+    }
+
+    // Current month days
+    var now = new Date();
+    for (var d = 1; d <= daysInMonth; d++) {
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = d;
+      var ymd = year + '-' + String(month+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+
+      if (ymd === todayStr) btn.className = 'cal-today';
+      if (calSelected === ymd) btn.className = 'cal-selected';
+
+      // Disable past dates
+      if (ymd < todayStr) {
+        btn.className = 'cal-other';
+        btn.disabled = true;
+      }
+
+      (function(ymd, el){
+        el.addEventListener('click', function(){
+          calSelected = ymd;
+          dateHidden.value = ymd;
+          var parts = ymd.split('-');
+          var dObj = new Date(+parts[0], +parts[1]-1, +parts[2]);
+          dateBtn.textContent = dObj.toLocaleDateString('ru-RU', { day:'numeric', month:'long', year:'numeric' });
+          dateBtn.classList.add('filled');
+          calOverlay.classList.remove('active');
+        });
+      })(ymd, btn);
+
+      calGrid.appendChild(btn);
+    }
+
+    // Fill remaining cells
+    var totalCells = firstDay + daysInMonth;
+    var remaining = totalCells % 7;
+    if (remaining > 0) {
+      for (var i = 1; i <= 7 - remaining; i++) {
+        var btn = document.createElement('button');
+        btn.className = 'cal-other';
+        btn.textContent = i;
+        btn.disabled = true;
+        calGrid.appendChild(btn);
+      }
+    }
+  }
+
+  dateBtn.addEventListener('click', function(){ calOverlay.classList.add('active'); renderCalendar(); });
+  calClose.addEventListener('click', function(){ calOverlay.classList.remove('active'); });
+  calOverlay.addEventListener('click', function(e){ if (e.target === calOverlay) calOverlay.classList.remove('active'); });
+  calPrev.addEventListener('click', function(){ calDate.setMonth(calDate.getMonth() - 1); renderCalendar(); });
+  calNext.addEventListener('click', function(){ calDate.setMonth(calDate.getMonth() + 1); renderCalendar(); });
+  calTodayBtn.addEventListener('click', function(){
+    calSelected = todayStr;
+    dateHidden.value = todayStr;
+    var parts = todayStr.split('-');
+    var dObj = new Date(+parts[0], +parts[1]-1, +parts[2]);
+    dateBtn.textContent = dObj.toLocaleDateString('ru-RU', { day:'numeric', month:'long', year:'numeric' });
+    dateBtn.classList.add('filled');
+    calOverlay.classList.remove('active');
+  });
+  calClear.addEventListener('click', function(){
+    calSelected = null;
+    dateHidden.value = '';
+    dateBtn.textContent = 'Выберите дату';
+    dateBtn.classList.remove('filled');
+    calOverlay.classList.remove('active');
+  });
+
+  // === Time Popup ===
+  var timeOverlay = document.getElementById('timeOverlay');
+  var timeBtn = document.getElementById('timeBtn');
+  var timeHidden = document.getElementById('time');
+  var timeList = document.getElementById('timeList');
+  var timeClose = document.getElementById('timeClose');
+
+  var timeSlots = [];
+  for (var h = 9; h <= 21; h++) {
+    timeSlots.push(String(h).padStart(2,'0') + ':00');
+    if (h < 21) timeSlots.push(String(h).padStart(2,'0') + ':30');
+  }
+
+  function renderTimes() {
+    timeList.innerHTML = '';
+    timeSlots.forEach(function(t){
+      var btn = document.createElement('button');
+      btn.type = 'button';
+      btn.textContent = t;
+      if (timeHidden.value === t) btn.className = 'sel';
+      btn.addEventListener('click', function(){
+        timeHidden.value = t;
+        timeBtn.textContent = t;
+        timeBtn.classList.add('filled');
+        timeOverlay.classList.remove('active');
+      });
+      timeList.appendChild(btn);
+    });
+  }
+
+  timeBtn.addEventListener('click', function(){ timeOverlay.classList.add('active'); renderTimes(); });
+  timeClose.addEventListener('click', function(){ timeOverlay.classList.remove('active'); });
+  timeOverlay.addEventListener('click', function(e){ if (e.target === timeOverlay) timeOverlay.classList.remove('active'); });
+
+  // === Form Submit ===
+  document.getElementById('bookingForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('name').value.trim();
+    var phone = document.getElementById('phone').value.trim();
+    var master = document.getElementById('master').value;
+    var service = document.getElementById('service').value;
+    var date = dateHidden.value;
+    var time = timeHidden.value;
+    var errors = [];
+    if (name.length < 2) errors.push('Введите имя');
+    if (phone.replace(/[^0-9]/g,'').length < 10) errors.push('Введите корректный телефон');
+    if (!master) errors.push('Выберите мастера');
+    if (!service) errors.push('Выберите услугу');
+    if (!date) errors.push('Выберите дату');
+    if (!time) errors.push('Выберите время');
+    if (errors.length > 0) {
+      alert('Пожалуйста, исправьте:\n\u2022 ' + errors.join('\n\u2022 '));
+      return;
+    }
+    var submitBtn = document.querySelector('.btn-submit');
+    submitBtn.textContent = 'Отправляем...';
+    submitBtn.disabled = true;
+
+    var dateFormatted = new Date(date + 'T' + time).toLocaleDateString('ru-RU', { day:'numeric', month:'long' });
+
+    fetch('/api/vk-notify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name: name, phone: phone, master: master, service: service, date: date, time: time })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      if (data.success) {
+        document.getElementById('modalName').textContent = name;
+        document.getElementById('modalMaster').textContent = master;
+        document.getElementById('modalDate').textContent = dateFormatted;
+        document.getElementById('modalTime').textContent = time;
+        modalOverlay.classList.add('active');
+        document.getElementById('bookingForm').reset();
+        dateBtn.textContent = 'Выберите дату';
+        dateBtn.classList.remove('filled');
+        timeBtn.textContent = 'Выберите время';
+        timeBtn.classList.remove('filled');
+        dateHidden.value = '';
+        timeHidden.value = '';
+      } else {
+        alert('Ошибка при отправке. Попробуйте ещё раз или позвоните нам.');
+      }
+    })
+    .catch(function(){
+      alert('Ошибка сети. Проверьте соединение и попробуйте снова.');
+    })
+    .finally(function(){
+      submitBtn.textContent = 'Записаться';
+      submitBtn.disabled = false;
+    });
+  });
+</script>
+
+</body>
+</html>
