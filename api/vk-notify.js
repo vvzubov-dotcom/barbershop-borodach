@@ -1,4 +1,4 @@
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
   ].join('\n');
 
   try {
-    const params = new URLSearchParams({
+    var params = new URLSearchParams({
       access_token: VK_TOKEN,
       user_id: VK_ADMIN_ID,
       random_id: String(Math.floor(Math.random() * 2147483647)),
@@ -36,17 +36,17 @@ export default async function handler(req, res) {
       v: '5.199'
     });
 
-    const response = await fetch('https://api.vk.com/method/messages.send?' + params.toString());
-    const data = await response.json();
+    var response = await fetch('https://api.vk.com/method/messages.send?' + params.toString());
+    var data = await response.json();
 
     if (data.error) {
       console.error('VK API error:', JSON.stringify(data.error));
       return res.status(500).json({ error: 'VK API error: ' + (data.error.error_msg || 'unknown') });
     }
 
-    return res.status(200).json({ success: true });
+    res.status(200).json({ success: true });
   } catch (err) {
-    console.error('Fetch error:', err);
-    return res.status(500).json({ error: 'Internal error' });
+    console.error('Error:', err);
+    res.status(500).json({ error: 'Internal error' });
   }
-}
+};
